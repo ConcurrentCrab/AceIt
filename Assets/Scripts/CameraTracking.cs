@@ -4,13 +4,12 @@ public class CameraTracking : MonoBehaviour {
 
     [SerializeField] float smoothTime;
 
-    Transform target;
+    public Transform target;
     Vector3 relativePos = Vector3.zero;
     Vector3 smoothVel = Vector3.zero;
 
     void Start() {
-        target = GameGlobal.game.Player.transform;
-        relativePos = transform.position - target.position;
+        relativePos = transform.position;
     }
 
     void Update() {

@@ -17,6 +17,11 @@ public class Game : MonoBehaviour {
 
     public Camera Cam => cam;
 
+    public void AssignPlayer(GameObject p) {
+        player = p;
+        cam.gameObject.GetComponent<CameraTracking>().target = player.transform;
+    }
+
     private void Awake() {
         GameGlobal.game = this;
     }
