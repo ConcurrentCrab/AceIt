@@ -8,6 +8,7 @@ public class PhotonGame : MonoBehaviourPunCallbacks {
     [SerializeField] GameObject playerPrefab;
 
     void Start() {
+        PhotonNetwork.SendRate = 60;
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -27,7 +28,7 @@ public class PhotonGame : MonoBehaviourPunCallbacks {
 
     public override void OnJoinedRoom() {
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
-        player.GetComponent<PlayerInput>().enabled = true;
+        player.GetComponent<XRRigStateManager>().rigEnabledOnStart = true;
         GameGlobal.game.AssignPlayer(player);
     }
 
